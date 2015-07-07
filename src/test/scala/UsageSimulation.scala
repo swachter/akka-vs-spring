@@ -15,7 +15,7 @@ class UsageSimulation extends Simulation {
   val maxWaitMs = 1000 milliseconds
 
   val httpConf = http
-    .baseURL("http://localhost:8080")
+    .baseURL(s"""http://localhost:${System.getProperty("port", "8080")}""")
     .disableFollowRedirect
 
   val headers = Map("Keep-Alive" -> "115")
