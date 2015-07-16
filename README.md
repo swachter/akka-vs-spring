@@ -73,3 +73,51 @@ rmation: localhost/127.0.0.1:9090
 calhost/127.0.0.1:9090 of 60000 ms
 ================================================================================
 ```
+
+After updating akka-http from RC4 to 1.0 the situation improved somewhat but it is still far from optimal:
+
+```
+================================================================================
+---- Global Information --------------------------------------------------------
+> request count                                      78392 (OK=43327  KO=35065 )
+> min response time                                      0 (OK=0      KO=990   )
+> max response time                                   9067 (OK=9067   KO=1888  )
+> mean response time                                   579 (OK=195    KO=1054  )
+> std deviation                                        663 (OK=681    KO=47    )
+> response time 50th percentile                        696 (OK=2      KO=1050  )
+> response time 75th percentile                       1052 (OK=17     KO=1077  )
+> mean requests/sec                                2460.515 (OK=1359.918 KO=1100.596)
+---- Response Time Distribution ------------------------------------------------
+> t < 800 ms                                         39625 ( 51%)
+> 800 ms < t < 1200 ms                                1176 (  2%)
+> t > 1200 ms                                         2526 (  3%)
+> failed                                             35065 ( 45%)
+---- Errors --------------------------------------------------------------------
+> java.net.ConnectException: Connection refused: no further info  35065 (100,0%)
+rmation: localhost/127.0.0.1:9090
+================================================================================
+```
+
+Increasing ```max-connections``` to 10000 improved the situation further. But still the result is far from optimal:
+
+```
+================================================================================
+---- Global Information --------------------------------------------------------
+> request count                                     102870 (OK=72575  KO=30295 )
+> min response time                                      0 (OK=0      KO=992   )
+> max response time                                   2660 (OK=2660   KO=1844  )
+> mean response time                                   417 (OK=151    KO=1053  )
+> std deviation                                        532 (OK=401    KO=40    )
+> response time 50th percentile                         10 (OK=4      KO=1051  )
+> response time 75th percentile                       1031 (OK=16     KO=1075  )
+> mean requests/sec                                3331.282 (OK=2350.227 KO=981.056)
+---- Response Time Distribution ------------------------------------------------
+> t < 800 ms                                         66783 ( 65%)
+> 800 ms < t < 1200 ms                                2124 (  2%)
+> t > 1200 ms                                         3668 (  4%)
+> failed                                             30295 ( 29%)
+---- Errors --------------------------------------------------------------------
+> java.net.ConnectException: Connection refused: no further info  30295 (100,0%)
+rmation: localhost/127.0.0.1:9090
+================================================================================
+```
