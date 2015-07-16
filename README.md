@@ -97,3 +97,27 @@ After updating akka-http from RC4 to 1.0 the situation improved somewhat but it 
 rmation: localhost/127.0.0.1:9090
 ================================================================================
 ```
+
+Increasing ```max-connections``` to 10000 improved the situation further. But still the result is far from optimal:
+
+```
+================================================================================
+---- Global Information --------------------------------------------------------
+> request count                                     102870 (OK=72575  KO=30295 )
+> min response time                                      0 (OK=0      KO=992   )
+> max response time                                   2660 (OK=2660   KO=1844  )
+> mean response time                                   417 (OK=151    KO=1053  )
+> std deviation                                        532 (OK=401    KO=40    )
+> response time 50th percentile                         10 (OK=4      KO=1051  )
+> response time 75th percentile                       1031 (OK=16     KO=1075  )
+> mean requests/sec                                3331.282 (OK=2350.227 KO=981.056)
+---- Response Time Distribution ------------------------------------------------
+> t < 800 ms                                         66783 ( 65%)
+> 800 ms < t < 1200 ms                                2124 (  2%)
+> t > 1200 ms                                         3668 (  4%)
+> failed                                             30295 ( 29%)
+---- Errors --------------------------------------------------------------------
+> java.net.ConnectException: Connection refused: no further info  30295 (100,0%)
+rmation: localhost/127.0.0.1:9090
+================================================================================
+```
