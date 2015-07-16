@@ -73,3 +73,27 @@ rmation: localhost/127.0.0.1:9090
 calhost/127.0.0.1:9090 of 60000 ms
 ================================================================================
 ```
+
+After updating akka-http from RC4 to 1.0 the situation improved somewhat but it is still far from optimal:
+
+```
+================================================================================
+---- Global Information --------------------------------------------------------
+> request count                                      78392 (OK=43327  KO=35065 )
+> min response time                                      0 (OK=0      KO=990   )
+> max response time                                   9067 (OK=9067   KO=1888  )
+> mean response time                                   579 (OK=195    KO=1054  )
+> std deviation                                        663 (OK=681    KO=47    )
+> response time 50th percentile                        696 (OK=2      KO=1050  )
+> response time 75th percentile                       1052 (OK=17     KO=1077  )
+> mean requests/sec                                2460.515 (OK=1359.918 KO=1100.596)
+---- Response Time Distribution ------------------------------------------------
+> t < 800 ms                                         39625 ( 51%)
+> 800 ms < t < 1200 ms                                1176 (  2%)
+> t > 1200 ms                                         2526 (  3%)
+> failed                                             35065 ( 45%)
+---- Errors --------------------------------------------------------------------
+> java.net.ConnectException: Connection refused: no further info  35065 (100,0%)
+rmation: localhost/127.0.0.1:9090
+================================================================================
+```
