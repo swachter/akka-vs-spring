@@ -18,7 +18,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gatling.version>2.1.6</gatling.version>
-    <stream.version>1.0</stream.version>
+    <akka.version>2.4.2</akka.version>
     <gatling.skip>true</gatling.skip>
     <start-class>eu.swdev.akka_vs_spring.Main</start-class>
   </properties>
@@ -42,12 +42,12 @@
     <dependency>
       <groupId>com.typesafe.akka</groupId>
       <artifactId>akka-actor_2.11</artifactId>
-      <version>2.3.11</version>
+      <version>${akka.version}</version>
     </dependency>
     <dependency>
       <groupId>com.typesafe.akka</groupId>
       <artifactId>akka-http-experimental_2.11</artifactId>
-      <version>${stream.version}</version>
+      <version>${akka.version}</version>
     </dependency>
     <dependency>
       <groupId>io.gatling</groupId>
