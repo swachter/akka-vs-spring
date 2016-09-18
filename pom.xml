@@ -18,7 +18,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gatling.version>2.1.6</gatling.version>
-    <akka.version>2.4.2</akka.version>
+    <akka.version>2.4.10</akka.version>
     <gatling.skip>true</gatling.skip>
     <start-class>eu.swdev.akka_vs_spring.Main</start-class>
   </properties>
