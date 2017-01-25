@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit
 import akka.actor.{ActorRef, ActorSystem}
 import akka.event.Logging
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 
@@ -24,12 +25,7 @@ class HttpReceiver()(implicit val actorSystem: ActorSystem) {
   def doBind(interface: String, port: Int): Unit = {
 
     val route = get {
-              complete {
-//                "Akka"
-                val promise = Promise[String]()
-                scheduler.scheduleOnce(Duration(2000l, TimeUnit.MILLISECONDS))(promise.success("Akka"))
-                promise.future
-              }
+              complete("Akka")
           }
 
     Http().bindAndHandle(route, interface, port)

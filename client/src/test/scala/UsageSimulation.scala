@@ -9,10 +9,10 @@ import scala.concurrent.duration._
 class UsageSimulation extends Simulation {
 
   val rampUpTimeSecs = 20
-  val testTimeSecs = 10
-  val noOfUsers = 10000
-  val minWaitMs = 10 milliseconds
-  val maxWaitMs = 1000 milliseconds
+  val testTimeSecs = 60
+  val noOfUsers = 11000
+  val minWaitMs = 5 milliseconds
+  val maxWaitMs = 10 milliseconds
 
   val httpConf = http
     .baseURL(s"""http://localhost:${System.getProperty("port", "8080")}""")
